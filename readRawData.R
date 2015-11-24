@@ -18,17 +18,16 @@ plot(table(dfClust$cluster))
 #Create sample training and testing data
 user_avg_rating <- read.table("user_avg_rating.txt")
 movie_raw_info <- read.csv("movie_raw_info.csv")
-sample <- read.csv("testResultForm.csv")
+sample <- read.csv("sample.csv")
 sample_Y <- sample$rating
 sample$movie_year <- movie_raw_info$year[sample$movie_id]
 sample$movie_cluster <- movie_raw_info$cluster[sample$movie_id]
 sample$movie_avgScore <- movie_raw_info$avgScore[sample$movie_id]
-#TODO: get the right user average rating
-sample$user_avg_rating <- user_avg_rating$V2[sample$user_id]
 sample_X <- sample
 sample_X$movie_id <- NULL
 sample_X$user_id <- NULL
-
+sample_X$rating <- NULL
+sample_X$id <- NULL
 
 #Create training data and testing data from sample data
 #randomly select training data and test data
@@ -41,3 +40,7 @@ test_index <- index[70001:98058]
 X_test <- sample_X[test_index,]
 Y_test <- sample_Y[test_index]
 
+write.csv(X_train,"X_train.csv")
+write.csv(X_test,"X_test.csv")
+write.csv(Y_train,"Y_train.csv")
+write.csv(Y_test,"Y_test.csv")
