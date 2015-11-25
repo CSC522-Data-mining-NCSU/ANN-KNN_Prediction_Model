@@ -44,3 +44,20 @@ write.csv(X_train,"X_train.csv")
 write.csv(X_test,"X_test.csv")
 write.csv(Y_train,"Y_train.csv")
 write.csv(Y_test,"Y_test.csv")
+
+write.csv(sample_X,"sample_X.csv",row.names = FALSE)
+write.csv(sample_Y,"sample_Y.csv",row.names = FALSE)
+
+install.packages('neuralnet')
+library("neuralnet")
+X_train = read.csv("X_train.csv")
+Y_train = read.csv("Y_train.csv")
+
+net.sqrt <- neuralnet(Y_train,X_train, hidden=10, threshold=0.01)
+print(net.sqrt)
+
+#Plot the neural network
+plot(net.sqrt)
+
+pre = predict(ANN,X_train)
+table(pre,Y_train)
