@@ -6,7 +6,7 @@
 %
 %   X_train - input data.
 %   Y_train - target data.
-
+load('sampleData.mat');
 x = sampleX';
 t = sampleY';
 
@@ -35,7 +35,7 @@ e = gsubtract(t,y);
 performance = perform(net,t,y);
 tind = vec2ind(t);
 yind = vec2ind(y);
-%percentErrors = sum(tind ~= yind)/numel(tind);
+percentErrors = sum(tind ~= yind)/numel(tind);
 
 % View the Network
 %view(net)
