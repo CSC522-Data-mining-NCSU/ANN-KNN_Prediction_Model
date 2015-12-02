@@ -6,6 +6,7 @@
 clear
 clc
 load('data.mat')
+%load('newData.mat')
 mdl = fitcknn(Xtrain,Ytrain);
 yPreTrain = predict(mdl,Xtrain);
 %%Error rate

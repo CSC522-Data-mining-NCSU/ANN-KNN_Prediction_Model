@@ -1,5 +1,4 @@
 #Process both train and test data, 100,000 records
-user_avg_rating <- read.csv("user_avg.csv")
 movie_raw_info <- read.csv("movie_raw_info.csv")
 testSample <- read.csv("testSample.csv")
 testSample_Y <- testSample$rating

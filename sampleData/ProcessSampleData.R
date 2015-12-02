@@ -1,8 +1,8 @@
 #Process test sample data, 100,000 records
-user_avg_rating <- read.csv("user_avg.csv")
 movie_raw_info <- read.csv("movie_raw_info.csv")
 sample <- read.csv("testSample2.csv")
 sample_Y <- sample$rating
+
 sample$movie_year <- movie_raw_info$year[sample$movie_id]
 sample$movie_cluster <- movie_raw_info$cluster[sample$movie_id]
 sample$movie_avgScore <- movie_raw_info$avgScore[sample$movie_id]
@@ -31,3 +31,4 @@ write.csv(Y_test,"testY_test.csv")
 
 write.csv(sample_X,"testSample10_X.csv",row.names = FALSE)
 write.csv(sample_Y,"testSample10_Y.csv",row.names = FALSE)
+
