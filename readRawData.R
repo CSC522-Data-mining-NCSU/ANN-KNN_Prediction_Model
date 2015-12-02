@@ -29,6 +29,7 @@ sample_X$user_id <- NULL
 sample_X$rating <- NULL
 sample_X$id <- NULL
 
+
 #Create training data and testing data from sample data
 #randomly select training data and test data
 index <- sample(nrow(sample_X))
