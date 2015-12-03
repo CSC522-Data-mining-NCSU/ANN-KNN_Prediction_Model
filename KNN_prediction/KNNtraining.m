@@ -7,6 +7,28 @@ clear
 clc
 load('data.mat')
 %load('newData.mat')
+
+%normalize data
+maxX=max(Xtrain(:,1));
+minX=min(Xtrain(:,1));
+Xtrain(:,1) = (Xtrain(:,1) - minX)/(maxX-minX);
+
+maxX=max(Xtrain(:,2));
+minX=min(Xtrain(:,2));
+Xtrain(:,2) = (Xtrain(:,2) - minX)/(maxX-minX);
+
+
+maxX=max(Xtrain(:,3));
+minX=min(Xtrain(:,3));
+Xtrain(:,3) = (Xtrain(:,3) - minX)/(maxX-minX);
+
+
+maxX=max(Xtrain(:,4));
+minX=min(Xtrain(:,4));
+Xtrain(:,4) = (Xtrain(:,4) - minX)/(maxX-minX);
+
+
+
 mdl = fitcknn(Xtrain,Ytrain);
 yPreTrain = predict(mdl,Xtrain);
 %%Error rate
@@ -36,6 +58,27 @@ cYtrain(:,4)=(Ytrain==4);
 cYtrain(:,5)=(Ytrain==5);
 cYtrain=cYtrain';
 figure,plotconfusion(cYtrain,cyPreTrain);
+
+
+
+%normalize data
+maxX=max(Xtest(:,1));
+minX=min(Xtest(:,1));
+Xtest(:,1) = (Xtest(:,1) - minX)/(maxX-minX);
+
+maxX=max(Xtest(:,2));
+minX=min(Xtest(:,2));
+Xtest(:,2) = (Xtest(:,2) - minX)/(maxX-minX);
+
+
+maxX=max(Xtest(:,3));
+minX=min(Xtest(:,3));
+Xtest(:,3) = (Xtest(:,3) - minX)/(maxX-minX);
+
+
+maxX=max(Xtest(:,4));
+minX=min(Xtest(:,4));
+Xtest(:,4) = (Xtest(:,4) - minX)/(maxX-minX);
 
 
 %%RMSE for testing data
