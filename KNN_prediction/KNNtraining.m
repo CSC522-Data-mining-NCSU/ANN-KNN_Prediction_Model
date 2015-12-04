@@ -29,7 +29,7 @@ Xtrain(:,4) = (Xtrain(:,4) - minX)/(maxX-minX);
 
 
 
-mdl = fitcknn(Xtrain,Ytrain);
+mdl = fitcknn(Xtrain,Ytrain,'NumNeighbors',7,'Standardize',1);
 yPreTrain = predict(mdl,Xtrain);
 %%Error rate
 error_rate_train = 1 - sum(yPreTrain == Ytrain)/length(Ytrain);

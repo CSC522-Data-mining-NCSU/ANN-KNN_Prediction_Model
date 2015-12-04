@@ -13,14 +13,15 @@ index_generator = randperm(100000,100000);
 train_index = index_generator(1:70000);
 test_index = index_generator(70001:100000);
 %generate training data
-Xtrain = X(:,train_index);
-Ytrain = Y_target(:,train_index);
+Xtrain = sampleX(train_index,:);
+Ytrain = sampleY(train_index,:);
 %generate testing data
-Xtest = X(:,test_index);
-Ytest = Y_target(:,test_index);
+Xtest = sampleX(test_index,:);
+Ytest = sampleY(test_index,:);
 
 
 %normalize data
+for 
 maxX=max(Xtrain(:,1));
 minX=min(Xtrain(:,1));
 Xtrain(:,1) = (Xtrain(:,1) - minX)/(maxX-minX);

@@ -21,27 +21,14 @@ Ytest = sampleY(test_index,:);
 
 
 %normalize data
-maxX=max(Xtrain(:,1));
-minX=min(Xtrain(:,1));
-Xtrain(:,1) = (Xtrain(:,1) - minX)/(maxX-minX);
-
-maxX=max(Xtrain(:,2));
-minX=min(Xtrain(:,2));
-Xtrain(:,2) = (Xtrain(:,2) - minX)/(maxX-minX);
+for i = 23:26
+    maxX=max(Xtrain(:,i));
+    minX=min(Xtrain(:,i));
+    Xtrain(:,i) = (Xtrain(:,i) - minX)/(maxX-minX);
+end
 
 
-maxX=max(Xtrain(:,3));
-minX=min(Xtrain(:,3));
-Xtrain(:,3) = (Xtrain(:,3) - minX)/(maxX-minX);
-
-
-maxX=max(Xtrain(:,4));
-minX=min(Xtrain(:,4));
-Xtrain(:,4) = (Xtrain(:,4) - minX)/(maxX-minX);
-
-
-
-mdl = fitcknn(Xtrain,Ytrain);
+mdl = fitcknn(Xtrain,Ytrain,'NumNeighbors',7,'Standardize',1);
 yPreTrain = predict(mdl,Xtrain);
 %%Error rate
 error_rate_train = 1 - sum(yPreTrain == Ytrain)/length(Ytrain);
@@ -74,23 +61,13 @@ figure,plotconfusion(cYtrain,cyPreTrain);
 
 
 %normalize data
-maxX=max(Xtest(:,1));
-minX=min(Xtest(:,1));
-Xtest(:,1) = (Xtest(:,1) - minX)/(maxX-minX);
 
-maxX=max(Xtest(:,2));
-minX=min(Xtest(:,2));
-Xtest(:,2) = (Xtest(:,2) - minX)/(maxX-minX);
-
-
-maxX=max(Xtest(:,3));
-minX=min(Xtest(:,3));
-Xtest(:,3) = (Xtest(:,3) - minX)/(maxX-minX);
-
-
-maxX=max(Xtest(:,4));
-minX=min(Xtest(:,4));
-Xtest(:,4) = (Xtest(:,4) - minX)/(maxX-minX);
+%normalize data
+for i = 23:26
+    maxX=max(Xtest(:,i));
+    minX=min(Xtest(:,i));
+    Xtest(:,i) = (Xtest(:,i) - minX)/(maxX-minX);
+end
 
 
 %%RMSE for testing data
