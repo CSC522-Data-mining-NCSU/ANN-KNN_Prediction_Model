@@ -2,7 +2,7 @@
 Just use raw data, predict the actual rating of a user give to a specific movie.
 The main folder contains the raw data and data preprocessing code, which is written in R.
 
-#sampleData
+##sampleData
 This folder contains the sample training and testing data. Data preprocess code are written in R.
 
 ###readRawData.R
